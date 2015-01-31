@@ -1,9 +1,11 @@
 package net.stuhome.hp.motixing;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import net.stuhome.hp.fragments.MainFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +14,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            getFragmentManager().beginTransaction().add(R.id.main_container, MainFragment.newInstance()).commit();
+        }
     }
 
 
@@ -33,7 +38,6 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
